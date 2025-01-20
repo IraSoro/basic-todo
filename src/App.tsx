@@ -37,7 +37,13 @@ function App() {
     }
   };
 
-  const toggleCompletion = (id: number) => {};
+  const toggleCompletion = (id: number) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
 
   return (
     <Container maxWidth="sm" style={{ marginTop: "2rem" }}>
