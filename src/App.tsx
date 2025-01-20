@@ -30,7 +30,12 @@ function App() {
   const [newTask, setNewTask] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
 
-  const handleAddTask = () => {};
+  const handleAddTask = () => {
+    if (newTask.trim()) {
+      setTodos([...todos, { id: Date.now(), text: newTask, completed: false }]);
+      setNewTask("");
+    }
+  };
 
   const toggleCompletion = (id: number) => {};
 
