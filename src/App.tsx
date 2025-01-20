@@ -32,7 +32,7 @@ function App() {
 
   const handleAddTask = () => {
     if (newTask.trim()) {
-      setTodos([...todos, { id: Date.now(), text: newTask, completed: false }]);
+      setTodos([{ id: Date.now(), text: newTask, completed: false }, ...todos]);
       setNewTask("");
     }
   };
