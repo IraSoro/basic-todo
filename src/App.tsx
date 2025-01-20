@@ -45,6 +45,21 @@ function App() {
     );
   };
 
+  const handleFilterChange = (
+    _: React.MouseEvent<HTMLElement>,
+    newFilter: Filter
+  ) => {
+    if (newFilter !== null) {
+      setFilter(newFilter);
+    }
+  };
+
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "completed") return todo.completed;
+    if (filter === "active") return !todo.completed;
+    return true;
+  });
+
   return (
     <Container maxWidth="sm" style={{ marginTop: "2rem" }}>
       <TextField
@@ -67,6 +82,7 @@ function App() {
       <ToggleButtonGroup
         value={filter}
         exclusive
+        onChange={handleFilterChange}
         style={{ marginTop: "1rem" }}
         fullWidth
       >
@@ -76,7 +92,7 @@ function App() {
       </ToggleButtonGroup>
 
       <List style={{ marginTop: "1rem" }}>
-        {todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <ListItem key={todo.id}>
             <Checkbox
               checked={todo.completed}
