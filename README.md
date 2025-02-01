@@ -10,3 +10,9 @@
 npm install
 npm run dev
 ```
+
+## Запуск тестов
+
+```shell
+npm run test
+```
